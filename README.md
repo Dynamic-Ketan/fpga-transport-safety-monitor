@@ -77,7 +77,7 @@ fpga-transport-safety-monitor/
 
 Colab notebook for data prep, training, evaluation, and artifact export. 
 
-- **Notebook**: [model.ipynb](https://colab.research. google.com/drive/1kr-J_9-sOu-YwkKoEPdKSemXSL7fzZY_?usp=sharing)
+- **Notebook**: [model.ipynb](https://colab.research.google.com/drive/1kr-J_9-sOu-YwkKoEPdKSemXSL7fzZY_?usp=sharing)
 - **Outputs**: `best_model.pkl`, `scaler_parameters.csv`
 - **Stack**: Python 3.8+, scikit-learn, numpy, pandas, opencv-python
 
