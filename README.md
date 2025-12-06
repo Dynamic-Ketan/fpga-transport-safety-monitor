@@ -112,7 +112,7 @@ python3 src/traffic_demo.py
 ```
 Processes traffic video, detects violations, outputs annotated MP4.
 
-**See [safety_project/README.md](kria_deployment/README.md) for detailed workflow, outputs, and technical explanations.**
+**See [kria_deployment/README.md](kria_deployment/README.md) for detailed workflow, outputs, and technical explanations.**
 
 ---
 
@@ -168,9 +168,9 @@ Processes traffic video, detects violations, outputs annotated MP4.
 
 | File/Folder | Purpose |
 |-------------|---------|
-| [safety_project/README.md](kria_deployment/README.md) | **Detailed workflow guide** (file descriptions, stage outputs, technical details) |
-| [safety_project/src/](kria_deployment/src/) | Source code for 3 pipeline stages |
-| [safety_project/results/](kria_deployment/results/) | Performance reports, CSVs, annotated video |
+| [kria_deployment/README.md](kria_deployment/README.md) | **Detailed workflow guide** (file descriptions, stage outputs, technical details) |
+| [kria_deployment/src/](kria_deployment/src/) | Source code for 3 pipeline stages |
+| [kria_deployment/results/](kria_deployment/results/) | Performance reports, CSVs, annotated video |
 | [model.ipynb (Colab)](https://colab.research.google.com/drive/1kr-J_9-sOu-YwkKoEPdKSemXSL7fzZY_?usp=sharing) | Training notebook with artifact export |
 
 ---
