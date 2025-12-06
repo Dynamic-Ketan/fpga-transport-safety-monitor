@@ -92,7 +92,7 @@ Processes traffic video and generates annotated output with violations flagged.
 
 ### Output 
 
-Check [Output Video](kria_deployment/results)
+Check [Output Video](results)
 
 ## Data Flow
 
