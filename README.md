@@ -95,7 +95,7 @@ safety_project/
 └── results/                           # Outputs
     ├── test_results_*.csv
     ├── performance_report. txt
-    ├── traffic_violations_simple.mp4  # [View](safety_project/results/traffic_violations_simple.mp4)
+    ├── traffic_violations_simple.mp4 
     └── traffic_violations_simple_report.txt
 ```
 
