@@ -45,7 +45,7 @@ Complete ML deployment pipeline for transport safety monitoring, from training t
 ### Key Features
 
 - **Model**: Random Forest (14 features, ~100KB, FPGA-ready)
-- **Latency**: 85.66ms mean, 260. 13ms max (meets <200ms avg requirement ✓)
+- **Latency**: 85.3ms mean (meets <200ms avg requirement ✓)
 - **Throughput**: 11.63 samples/second
 - **Detection Rate**: 24% hazard identification
 - **Sensor Fusion**: Acceleration (x,y,z), steering, braking, speed, jerk, statistics
