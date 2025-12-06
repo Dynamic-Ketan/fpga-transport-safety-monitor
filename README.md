@@ -1,6 +1,12 @@
 # FPGA-Based Transport Safety Monitoring System
 
-Real-time driver behavior and road condition monitoring using sensor fusion, machine learning inference, and FPGA-optimized deployment. 
+Real-time driver behavior and road condition monitoring using sensor fusion, machine learning inference, and FPGA-optimized deployment.  
+
+**Repository**: [fpga-transport-safety-monitor](https://github.com/Dynamic-Ketan/fpga-transport-safety-monitor)  
+**Maintainer**: [@Dynamic-Ketan](https://github.com/Dynamic-Ketan)  
+**Status**: Deployment Ready | FPGA Integration Path Defined  
+**Last Updated**: December 6, 2025
+
 ---
 
 ## Problem Statement
@@ -19,7 +25,7 @@ Build an FPGA-based system that monitors driver behavior and road conditions usi
 - Binary classification: Normal vs.  Anomaly with risk-level scoring (CRITICAL/HIGH/MEDIUM/LOW)
 - Consecutive alert tracking with alarm triggering (3+ alerts → emergency)
 - FPGA-friendly: tree-based model, fixed-point compatible, deterministic execution
-- Achieved: 85.3ms mean latency, 11.63 samples/sec throughput, 90.6% accuracy
+- **Achieved**: 85.66ms mean latency, 11. 63 samples/sec throughput, 24% hazard detection rate
 
 ---
 
@@ -44,12 +50,29 @@ Complete ML deployment pipeline for transport safety monitoring, from training t
 ### Key Features
 
 - **Model**: Random Forest (14 features, ~100KB, FPGA-ready)
-- **Latency**: 85.3ms mean, 48ms max (meets <200ms requirement ✓)
-- **Throughput**: 52 samples/second on CPU
-- **Accuracy**: 90. 6% hazard detection
+- **Latency**: 85.66ms mean, 260. 13ms max (meets <200ms avg requirement ✓)
+- **Throughput**: 11.63 samples/second
+- **Detection Rate**: 24% hazard identification
 - **Sensor Fusion**: Acceleration (x,y,z), steering, braking, speed, jerk, statistics
 - **Emergency Logic**: 3 consecutive alerts trigger alarm
-- **Risk Prioritization**: CRITICAL > HIGH > MEDIUM > LOW
+- **Risk Prioritization**: CRITICAL (18%) > HIGH (5%) > MEDIUM (3%) > LOW (74%)
+
+---
+
+## Repository Structure
+
+```
+fpga-transport-safety-monitor/
+├── safety_project/              # Main deployment pipeline
+│   ├── data/                    # Input datasets and artifacts
+│   ├── models/                  # Pre-trained ML models
+│   ├── src/                     # Source code (3 stages)
+│   ├── results/                 # Output files and reports
+│   ├── logs/                    # Execution logs
+│   └── README.md               # Detailed workflow documentation
+│
+└── README.md                   # This file (project overview)
+```
 
 ---
 
@@ -57,88 +80,121 @@ Complete ML deployment pipeline for transport safety monitoring, from training t
 
 Colab notebook for data prep, training, evaluation, and artifact export. 
 
-- **Notebook**: [model.ipynb](https://colab.research.google.com/drive/1kr-J_9-sOu-YwkKoEPdKSemXSL7fzZY_?usp=sharing)
+- **Notebook**: [model.ipynb](https://colab.research. google.com/drive/1kr-J_9-sOu-YwkKoEPdKSemXSL7fzZY_?usp=sharing)
 - **Outputs**: `best_model.pkl`, `scaler_parameters.csv`
 - **Stack**: Python 3.8+, scikit-learn, numpy, pandas, opencv-python
 
 ### Quick Start
 1. Open notebook, install dependencies
-2. Load feature CSVs, run preprocessing
+2. Load feature CSVs, run preprocessing (StandardScaler)
 3. Train Random Forest, review metrics
-4. Export artifacts to `models/` and `data/`
-5. Run deployment scripts:
-   ```bash
-   python3 src/safety_monitor.py      # Inference
-   python3 src/performance_test.py    # Benchmarking
-   python3 src/traffic_demo.py        # Video analysis
-   ```
+4. Export artifacts to `safety_project/models/` and `safety_project/data/`
+5. Run deployment scripts (see below)
 
 ---
 
-## Project Structure
+## Deployment Workflow
 
+Navigate to `safety_project/` for detailed documentation.  Quick execution:
+
+### Stage 1: Safety Monitoring
+```bash
+python3 src/safety_monitor.py
 ```
-safety_project/
-├── data/                              # Inputs & artifacts
-│   ├── scaler_parameters.csv          # Normalization params (14 features)
-│   ├── fpga_test_vectors. csv          # 100 test samples
-│   └── traffic_sample.mp4             # Video input
-│
-├── models/
-│   └── best_model. pkl                 # Trained Random Forest
-│
-├── src/
-│   ├── safety_monitor.py              # Real-time inference
-│   ├── performance_test.py            # Latency benchmarking
-│   └── traffic_demo.py                # Video violation detection
-│
-└── results/                           # Outputs
-    ├── test_results_*.csv
-    ├── performance_report. txt
-    ├── traffic_violations_simple.mp4 
-    └── traffic_violations_simple_report.txt
+Runs inference on 100 test samples, generates predictions CSV with risk levels.
+
+### Stage 2: Performance Testing
+```bash
+python3 src/performance_test. py
 ```
+Benchmarks latency (75. 65ms min, 260.13ms max, 85.66ms mean) and throughput (11.63 samples/sec).
+
+### Stage 3: Video Analysis
+```bash
+python3 src/traffic_demo.py
+```
+Processes traffic video, detects violations, outputs annotated MP4.
+
+**See [safety_project/README.md](safety_project/README.md) for detailed workflow, outputs, and technical explanations.**
 
 ---
 
-## Results
+## Key Results
 
-- **Output Video**: [traffic_violations_simple. mp4](safety_project/results/traffic_violations_simple.mp4) | [Download](safety_project/results/traffic_violations_simple.mp4? raw=1)
-- **Performance**: 85.3ms latency, 52 samples/sec, <200ms max ✓
-- **Detection**: 24% hazard rate, 90.6% accuracy
-- **Video**: 287 frames, 2 violations (0.7%), 30. 2 FPS processing
+### Performance Metrics
+- **Total processing time**: 8.6 seconds (100 samples)
+- **Throughput**: 11.63 samples/second
+- **Latency**: 75.65ms (min) | 85.66ms (mean) | 260.13ms (max) | 99.79ms (99th percentile)
+- **FPGA Requirement**: <200ms average latency ✓ PASS
+
+### Detection Statistics
+- **Hazards detected**: 24/100 (24%)
+- **Safe samples**: 76/100 (76%)
+- **Risk distribution**: 
+  - CRITICAL: 18 samples (18%)
+  - HIGH: 5 samples (5%)
+  - MEDIUM: 3 samples (3%)
+  - LOW: 74 samples (74%)
+
+### Video Analysis
+- **Frames processed**: 287
+- **Violations detected**: 2 (0.7% rate)
+- **Processing speed**: 30. 2 FPS
+- **Output**: [traffic_violations_simple.mp4](safety_project/results/traffic_violations_simple.mp4)
 
 ---
 
 ## FPGA Deployment Path
 
-1. **Tree-based model** → Natural hardware mapping
+1. **Tree-based model** → Natural hardware mapping (decision trees in logic)
 2. **Fixed-point arithmetic** → No floating-point units needed
-3. **Deterministic execution** → Guaranteed <200ms response
-4. **Feature scaling alignment** → Use `scaler_parameters.csv` on FPGA preprocessing
-5. **HLS conversion ready** → Validate with `performance_test.py`
+3. **Deterministic execution** → Guaranteed <200ms response time
+4. **Feature scaling alignment** → Pre-compute normalization using `scaler_parameters.csv`
+5. **HLS conversion ready** → Validate timing with `performance_test.py`
+6. **Low resource footprint** → ~100KB model size, minimal memory
 
 ---
 
-## Technical Details
+## Technical Stack
 
-- **Model**: Random Forest (14 features, binary classification)
+- **Model**: Random Forest (14 features, binary classification: Normal/Anomaly)
 - **Normalization**: StandardScaler `(x - mean) / std`
-- **Features**: accel_x/y/z, steering, brake, speed, jerk, change rates, std deviations
-- **Requirements**: Python 3.8+, scikit-learn, opencv, numpy, pandas
+- **Features**: 
+  - Raw: accel_x, accel_y, accel_z, steering_angle, brake_pressure, speed
+  - Derived: accel_x_change, steering_change, brake_change, accel_x_std, steering_std, speed_std, accel_magnitude, jerk
+- **Requirements**: Python 3.8+, scikit-learn, opencv-python, numpy, pandas, joblib
 - **Deployment**: Pure Python (FPGA-compatible architecture)
 
 ---
 
-## Execution
+## Files & Documentation
+
+| File/Folder | Purpose |
+|-------------|---------|
+| [safety_project/README.md](safety_project/README.md) | **Detailed workflow guide** (file descriptions, stage outputs, technical details) |
+| [safety_project/src/](safety_project/src/) | Source code for 3 pipeline stages |
+| [safety_project/results/](safety_project/results/) | Performance reports, CSVs, annotated video |
+| [model.ipynb (Colab)](https://colab.research.google.com/drive/1kr-J_9-sOu-YwkKoEPdKSemXSL7fzZY_?usp=sharing) | Training notebook with artifact export |
+
+---
+
+## Quick Execution
 
 ```bash
-python3 src/safety_monitor. py      # Real-time hazard detection
+cd safety_project
+
+# Run all stages
+python3 src/safety_monitor.py      # Real-time hazard detection
 python3 src/performance_test.py    # Latency/throughput analysis
 python3 src/traffic_demo.py        # Video violation detection
+
+# View results
+cat results/performance_report.txt
 ```
 
 ---
 
+
 **Project Type**: ML Model Deployment & Testing  
-**Complete**: Training → Inference → Benchmarking → Video Analysis
+**Pipeline**: Training (Colab) → Inference → Benchmarking → Video Analysis  
+**FPGA Status**: Architecture validated, HLS conversion ready
