@@ -92,7 +92,7 @@ Processes traffic video and generates annotated output with violations flagged.
 
 ### Output 
 
-Check [Output Video](results)
+Check [Output Video](results/traffic_violations_simple.mp4)
 
 ## Data Flow
 
