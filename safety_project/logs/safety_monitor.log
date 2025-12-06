@@ -1,0 +1,5 @@
+[2025-12-05 06:59:12.368] [INFO] System initialized
+[2025-12-05 06:59:12.368] [INFO] Processing file: data/fpga_test_vectors.csv
+[2025-12-05 06:59:12.377] [INFO] Loaded 100 samples with 17 columns
+[2025-12-05 06:59:21.581] [INFO] Processed 100/100 samples
+[2025-12-05 06:59:21.582] [INFO] ✅ Results saved to results/test_results.csv

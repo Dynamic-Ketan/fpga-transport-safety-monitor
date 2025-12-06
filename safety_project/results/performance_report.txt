@@ -1,0 +1,25 @@
+FPGA Transport Safety Monitoring - Performance Report
+============================================================
+
+Test Date: 2025-12-06 14:20:03
+Samples Processed: 100
+Total Time: 2.745 seconds
+Throughput: 36.43 samples/sec
+
+Latency Statistics (ms):
+  Min:    26.22
+  Max:    59.48
+  Mean:   27.33
+  Median: 26.90
+  99th %: 29.76
+
+Detection Statistics:
+  Total Samples:    100
+  Hazards Detected: 24
+  Detection Rate:   24.00%
+
+Risk Level Distribution:
+  CRITICAL    :  18 ( 18.0%)
+  HIGH        :   5 (  5.0%)
+  MEDIUM      :   3 (  3.0%)
+  LOW         :  74 ( 74.0%)
