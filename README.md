@@ -58,14 +58,16 @@ Complete ML deployment pipeline for transport safety monitoring, from training t
 
 ```
 fpga-transport-safety-monitor/
-├── safety_project/              # Main deployment pipeline
+├── kria_deployment/              # Main deployment pipeline
 │   ├── data/                    # Input datasets and artifacts
 │   ├── models/                  # Pre-trained ML models
 │   ├── src/                     # Source code (3 stages)
 │   ├── results/                 # Output files and reports
 │   ├── logs/                    # Execution logs
 │   └── README.md               # Detailed workflow documentation
-│
+├── model_training/
+│   ├── model_training.ipynb
+│   └── README.md               # Detailed workflow documentation
 └── README.md                   # This file (project overview)
 ```
 
@@ -90,7 +92,7 @@ Colab notebook for data prep, training, evaluation, and artifact export.
 
 ## Deployment Workflow
 
-Navigate to `safety_project/` for detailed documentation.  Quick execution:
+Navigate to `kria_deployment/` for detailed documentation.  Quick execution:
 
 ### Stage 1: Safety Monitoring
 ```bash
@@ -110,7 +112,7 @@ python3 src/traffic_demo.py
 ```
 Processes traffic video, detects violations, outputs annotated MP4.
 
-**See [safety_project/README.md](safety_project/README.md) for detailed workflow, outputs, and technical explanations.**
+**See [safety_project/README.md](kria_deployment/README.md) for detailed workflow, outputs, and technical explanations.**
 
 ---
 
@@ -135,7 +137,7 @@ Processes traffic video, detects violations, outputs annotated MP4.
 - **Frames processed**: 287
 - **Violations detected**: 2 (0.7% rate)
 - **Processing speed**: 30. 2 FPS
-- **Output**: [traffic_violations_simple.mp4](safety_project/results/traffic_violations_simple.mp4)
+- **Output**: [traffic_violations_simple.mp4](kria_deployment/results/traffic_violations_simple.mp4)
 
 ---
 
@@ -166,26 +168,10 @@ Processes traffic video, detects violations, outputs annotated MP4.
 
 | File/Folder | Purpose |
 |-------------|---------|
-| [safety_project/README.md](safety_project/README.md) | **Detailed workflow guide** (file descriptions, stage outputs, technical details) |
-| [safety_project/src/](safety_project/src/) | Source code for 3 pipeline stages |
-| [safety_project/results/](safety_project/results/) | Performance reports, CSVs, annotated video |
+| [safety_project/README.md](kria_deployment/README.md) | **Detailed workflow guide** (file descriptions, stage outputs, technical details) |
+| [safety_project/src/](kria_deployment/src/) | Source code for 3 pipeline stages |
+| [safety_project/results/](kria_deployment/results/) | Performance reports, CSVs, annotated video |
 | [model.ipynb (Colab)](https://colab.research.google.com/drive/1kr-J_9-sOu-YwkKoEPdKSemXSL7fzZY_?usp=sharing) | Training notebook with artifact export |
-
----
-
-## Quick Execution
-
-```bash
-cd safety_project
-
-# Run all stages
-python3 src/safety_monitor.py      # Real-time hazard detection
-python3 src/performance_test.py    # Latency/throughput analysis
-python3 src/traffic_demo.py        # Video violation detection
-
-# View results
-cat results/performance_report.txt
-```
 
 ---
 
