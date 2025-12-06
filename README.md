@@ -2,11 +2,6 @@
 
 Real-time driver behavior and road condition monitoring using sensor fusion, machine learning inference, and FPGA-optimized deployment.  
 
-**Repository**: [fpga-transport-safety-monitor](https://github.com/Dynamic-Ketan/fpga-transport-safety-monitor)  
-**Maintainer**: [@Dynamic-Ketan](https://github.com/Dynamic-Ketan)  
-**Status**: Deployment Ready | FPGA Integration Path Defined  
-**Last Updated**: December 6, 2025
-
 ---
 
 ## Problem Statement
